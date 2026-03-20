@@ -28,3 +28,6 @@ Develop/
 CMakeCache.txt
 CMakeFiles
 
+TUM/
+KITTI/
+
