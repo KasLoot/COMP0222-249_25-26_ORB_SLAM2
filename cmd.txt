@@ -1,0 +1,3 @@
+evo_traj tum tum_results.txt --ref=TUM/rgbd_dataset_freiburg1_xyz/groundtruth.txt -a -s -p
+
+evo_ape tum TUM/rgbd_dataset_freiburg1_xyz/groundtruth.txt tum_results.txt -a -s -p
