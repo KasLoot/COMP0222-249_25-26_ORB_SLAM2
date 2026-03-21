@@ -1,3 +1,28 @@
-evo_traj tum tum_results.txt --ref=TUM/rgbd_dataset_freiburg1_xyz/groundtruth.txt -a -s -p
 
+TUM
+evo_traj tum tum_results.txt --ref=TUM/rgbd_dataset_freiburg1_xyz/groundtruth.txt -a -s -p
 evo_ape tum TUM/rgbd_dataset_freiburg1_xyz/groundtruth.txt tum_results.txt -a -s -p
+
+mono_tum TUM1.yaml TUM/rgbd_dataset_freiburg1_desk2 tum_desk2_results.txt
+evo_ape tum TUM/rgbd_dataset_freiburg1_desk2/groundtruth.txt tum_desk2_results.txt -a -s -p
+
+mono_tum TUM1.yaml TUM/rgbd_dataset_freiburg1_desk tum_desk_results.txt
+evo_ape tum TUM/rgbd_dataset_freiburg1_desk/groundtruth.txt output/slam/tum_results/tum_desk_results.txt -a -s -p
+evo_traj tum output/slam/tum_results/tum_desk_results.txt --ref=TUM/rgbd_dataset_freiburg1_desk/groundtruth.txt -a -s -p
+
+
+mono_tum TUM1.yaml TUM/rgbd_dataset_freiburg2_pioneer_slam2 output/slam/tum_results/tum_pioneer_slam2_results.txt
+
+
+
+mono_tum TUM1.yaml TUM/rgbd_dataset_freiburg1_room output/slam/tum_results/tum_room_results.txt
+
+
+mono_tum TUM1.yaml TUM/rgbd_dataset_freiburg2_large_with_loop output/slam/tum_results/tum_large_with_loop_results.txt
+
+`
+
+KITTI
+python Evaluation/kitti_to_tum.py KITTI/dataset/poses/07.txt KITTI/dataset/sequences/07/times.txt gt_07_tum.txt
+
+evo_ape tum gt_07_tum.txt kitti07_results.txt -a -s -p
