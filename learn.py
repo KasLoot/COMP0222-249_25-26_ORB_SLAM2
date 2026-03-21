@@ -627,7 +627,7 @@ def process_first_frame(image_path: str) -> tuple:
     # ── Stage 3: Extract full ORB features (OpenCV — production path) ──
     print("\n🎯 Full ORB extraction (OpenCV):")
     keypoints_cv, descriptors = extract_orb_features(
-        image, n_features=1500, n_levels=8, scale_factor=1.2,
+        image, n_features=10, n_levels=8, scale_factor=1.2,
     )
 
     if descriptors is None:
@@ -683,12 +683,12 @@ def process_first_frame(image_path: str) -> tuple:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="ORB-SLAM2 Step 1: Process first frame")
     parser.add_argument(
-        "--frames_dir", type=str, default="./frames",
+        "--frames_dir", type=str, default="KITTI/dataset/sequences/07/image_0",
         help="Directory containing frame images (0.png, 1.png, ...)",
     )
     parser.add_argument(
-        "--frame", default=0,
-        help="Which frame number to process (default: 0)",
+        "--frame", default="000000",
+        help="Which frame number to process (default: 000000)",
     )
     args = parser.parse_args()
 

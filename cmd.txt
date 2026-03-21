@@ -1,3 +1,5 @@
+export PATH=$PATH:$PWD/Install/bin
+
 
 TUM
 evo_traj tum tum_results.txt --ref=TUM/rgbd_dataset_freiburg1_xyz/groundtruth.txt -a -s -p
@@ -23,6 +25,14 @@ mono_tum TUM1.yaml TUM/rgbd_dataset_freiburg2_large_with_loop output/slam/tum_re
 `
 
 KITTI
+mono_kitti KITTI04-12.yaml KITTI/dataset/sequences/07 output/slam/kitti_results/kitti_07_results.txt
+
 python Evaluation/kitti_to_tum.py KITTI/dataset/poses/07.txt KITTI/dataset/sequences/07/times.txt gt_07_tum.txt
 
-evo_ape tum gt_07_tum.txt kitti07_results.txt -a -s -p
+evo_ape tum KITTI/dataset/poses/gt_07_tum.txt output/slam/kitti_results/kitti_07_results.txt -a -s -p --save_plot "output/evo/kitti_ape_baseline"
+
+evo_traj tum output/slam/kitti_results/kitti07_results.txt --ref=KITTI/dataset/poses/gt_07_tum.txt -a -s -p
+
+
+
+evo_ape tum KITTI/dataset/poses/gt_07_tum.txt output/slam/kitti_results/kitti_07_results_1200f.txt -a -s -p --save_plot "output/evo/kitti_ape_1200f"
